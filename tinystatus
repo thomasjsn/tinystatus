@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-title=tinystatus
-header="Global Status"
+title=status.homelab.no
+header="Homelab status"
 timeout=10
 tmp="$(mktemp -d)"
 checkfile="${1:-checks.csv}"
@@ -88,9 +88,9 @@ li { list-style: none; margin-bottom: 2px; padding: 5px; border-bottom: 1px soli
 EOF
 outagenb="$(find "${tmp}/ko" -mindepth 1 | grep -c 'status$')"
 if [ "${outagenb}" -ne 0 ]; then
-    echo "<ul><li class='panel failed-bg'>${outagenb} Outage(s)</li></ul>"
+    echo "<ul><li id='top_banner' class='panel failed-bg'>${outagenb} Outage(s)</li></ul>"
 else
-    echo "<ul><li class='panel success-bg'>All Systems Operational</li></ul>"
+    echo "<ul><li id='top_banner' class='panel success-bg'>All Systems Operational</li></ul>"
 fi
 cat << EOF
 <h1>Services</h1>
@@ -121,6 +121,27 @@ if [ -f "${incidentsfile}" ]; then
 fi
 cat <<EOF
 </div>
+<script>
+    var date1 = new Date('$(date +%FT%T%z)');
+    var date2 = new Date(Date.now() - 1000 * (60 * 5));
+
+    var dateIsOld = date2.getTime() > date1.getTime();
+
+    if (dateIsOld === true) {
+        var elements = document.querySelectorAll('.status');
+
+        for ( var i=elements.length; i--; ) {
+            elements[i].textContent = "Unknown";
+            elements[i].classList.remove("success");
+            elements[i].classList.add("failed");
+        }
+
+        var topBanner = document.getElementById("top_banner");
+        topBanner.innerHTML = "Monitoring probe lost!";
+        topBanner.classList.remove("success-bg");
+        topBanner.classList.add("failed-bg");
+    }
+</script>
 </body></html>
 EOF
 
