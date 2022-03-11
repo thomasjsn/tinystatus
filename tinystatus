@@ -72,7 +72,9 @@ cat << EOF
 body { font-family: segoe ui,Roboto,Oxygen-Sans,Ubuntu,Cantarell,helvetica neue,Verdana,sans-serif; }
 h1 { margin-top: 30px; }
 ul { padding: 0px; }
-li { list-style: none; margin-bottom: 2px; padding: 5px; border-bottom: 1px solid #ddd;  }
+li { list-style: none; padding: .5rem; font-size: 18px; background-color: white; border-radius: 3px; }
+li:not(:last-child) { margin-bottom: .5rem; }
+body { background-color: #f5f8fa; }
 .container { max-width: 600px; width: 100%; margin: 15px auto; }
 .panel { text-align: center; padding: 1rem; border: 0px; border-radius: 3px; font-size: 20px; }
 .failed-bg  { color: white; background-color: #E25D6A; }
@@ -81,7 +83,7 @@ li { list-style: none; margin-bottom: 2px; padding: 5px; border-bottom: 1px soli
 .success { color: #52B86A; }
 .small { font-size: 80%; }
 .status { float: right; }
-.incident { padding: .5rem; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 33px -32px; border-left: 16px solid rgba(177, 177, 177, 0.2); }
+.incident { padding: .5rem; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 33px -32px; border-left: 16px solid rgba(177, 177, 177, 0.2); background-color: white; }
 .incident:not(:last-child) { margin-bottom: 16px; }
 .incident .timestamp { font-size: 13px; color: rgb(110, 107, 107); font-weight: bold; }
 .incident.bg-info { border-left: 16px solid rgba(110, 223, 246, 0.2); }
