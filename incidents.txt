@@ -1,2 +1,4 @@
-2021/02/01 08:00 - Site unavailable. Resolved after 5 minutes of downtime.
-2021/01/01 09:00 - User may have problem with API. Incident resolved after 1 hour.
+danger|<p class="timestamp">2022-03-11 14:20</p><p>Danger test</p>
+warning|<p class="timestamp">2022-03-11 14:20</p><p>Warning test</p>
+success|<p class="timestamp">2022-03-11 14:20</p><p>Success test</p>
+info|<p class="timestamp">2022-03-11 14:20</p><p>Info test</p>

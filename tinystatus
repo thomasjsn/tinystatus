@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-title=status.homelab.no
+title="Homelab status"
 header="Homelab status"
 timeout=10
 tmp="$(mktemp -d)"
@@ -74,13 +74,20 @@ h1 { margin-top: 30px; }
 ul { padding: 0px; }
 li { list-style: none; margin-bottom: 2px; padding: 5px; border-bottom: 1px solid #ddd;  }
 .container { max-width: 600px; width: 100%; margin: 15px auto; }
-.panel { text-align: center; padding: 10px; border: 0px; border-radius: 5px; }
+.panel { text-align: center; padding: 1rem; border: 0px; border-radius: 3px; font-size: 20px; }
 .failed-bg  { color: white; background-color: #E25D6A; }
 .success-bg { color: white; background-color: #52B86A; }
 .failed  { color: #E25D6A; }
 .success { color: #52B86A; }
 .small { font-size: 80%; }
 .status { float: right; }
+.incident { padding: .5rem; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 33px -32px; border-left: 16px solid rgba(177, 177, 177, 0.2); }
+.incident:not(:last-child) { margin-bottom: 16px; }
+.incident .timestamp { font-size: 13px; color: rgb(110, 107, 107); font-weight: bold; }
+.incident.bg-info { border-left: 16px solid rgba(110, 223, 246, 0.2); }
+.incident.bg-success { border-left: 16px solid rgba(117, 183, 152, 0.2); }
+.incident.bg-warning { border-left: 16px solid rgba(255, 218, 106, 0.2); }
+.incident.bg-danger { border-left: 16px solid rgba(234, 134, 143, 0.2); }
 </style></head>
 <body>
 <div class='container'>
@@ -93,7 +100,7 @@ else
     echo "<ul><li id='top_banner' class='panel success-bg'>All Systems Operational</li></ul>"
 fi
 cat << EOF
-<h1>Services</h1>
+<h2>Services</h2>
 <ul>
 EOF
 for file in "${tmp}/ko/"*.status; do
@@ -112,9 +119,9 @@ cat << EOF
 <p class=small> Last check: $(date +%FT%T%z)</p>
 EOF
 if [ -f "${incidentsfile}" ]; then
-    echo '<h1>Incidents</h1>'
+    echo '<h2>Incidents</h2>'
     if [ -s "${incidentsfile}" ]; then
-        sed 's|^\(.*\)$|<p>\1</p>|' "${incidentsfile}"
+        sed 's|^\([a-z]*\)\|\(.*\)$|<div class="incident bg-\1">\2</div>|' "${incidentsfile}"
     else
         echo '<p>No incident reported yet ;)</p>'
     fi
@@ -137,7 +144,7 @@ cat <<EOF
         }
 
         var topBanner = document.getElementById("top_banner");
-        topBanner.innerHTML = "Monitoring probe lost!";
+        topBanner.innerHTML = "Systems Unreachable";
         topBanner.classList.remove("success-bg");
         topBanner.classList.add("failed-bg");
     }
