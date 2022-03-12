@@ -14,7 +14,7 @@ tinystatus generate an html status page via shell script.
 
 ## Demo
 
-An example site is available [here](https://lab.bdro.fr/tinystatus/).
+An example site is available [here](https://status.homelab.no).
 
 ## Setup
 
@@ -41,3 +41,13 @@ Command can be:
 There are also `http4`, `http6`, `ping4`, `ping6`, `port4`, `port6` for IPv4 or IPv6 only check.  
 Note: `port4` and `port6` require OpenBSD `nc` binary.
 
+The syntax of `incidents.txt` files is:
+```
+type|<h2>Example</h2><p>Single line HTML</p>
+```
+
+Types can be:
+* `info` - Blue
+* `success` - Green
+* `warning` - Yellow
+* `danger` - Red
