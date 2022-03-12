@@ -1,4 +1,4 @@
-danger|<p class="timestamp">2022-03-11 14:20</p><p>Danger test</p>
+danger|<p class="timestamp">2022-03-11 14:20</p><p>Danger test</p><p><strong>Resolved:</strong> I fixed this thing.</p>
 warning|<p class="timestamp">2022-03-11 14:20</p><p>Warning test</p>
 success|<p class="timestamp">2022-03-11 14:20</p><p>Success test</p>
-info|<p class="timestamp">2022-03-11 14:20</p><p>Info test</p>
+info|<p class="timestamp">2022-03-11 14:20</p><h2>Info test</h2><p>I'm doing maintenance.</p>

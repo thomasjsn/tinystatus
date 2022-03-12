@@ -72,7 +72,7 @@ cat << EOF
 body { font-family: segoe ui,Roboto,Oxygen-Sans,Ubuntu,Cantarell,helvetica neue,Verdana,sans-serif; }
 h1 { margin-top: 30px; }
 ul { padding: 0px; }
-li { list-style: none; padding: .5rem; font-size: 18px; background-color: white; border-radius: 3px; }
+li { list-style: none; padding: .5rem; font-size: 18px; background-color: white; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 30px -18px; }
 li:not(:last-child) { margin-bottom: .5rem; }
 body { background-color: #f5f8fa; }
 .container { max-width: 600px; width: 100%; margin: 15px auto; }
@@ -118,7 +118,7 @@ for file in "${tmp}/ok/"*.status; do
 done
 cat << EOF
 </ul>
-<p class=small> Last check: $(date +%FT%T%z)</p>
+<p class=small>Last check: $(date +%FT%T%z)</p>
 EOF
 if [ -f "${incidentsfile}" ]; then
     echo '<h2>Incidents</h2>'
@@ -129,6 +129,7 @@ if [ -f "${incidentsfile}" ]; then
     fi
 fi
 cat <<EOF
+<p class=small style="text-align: right;"><a href="https://github.com/thomasjsn/tinystatus">tinystatus</a></p>
 </div>
 <script>
     var date1 = new Date('$(date +%FT%T%z)');
