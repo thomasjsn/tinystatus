@@ -11,7 +11,7 @@ tinystatus generate an html status page via shell script.
 * Easy configuration and customisation
 * Tiny (~1kb) optimized result page
 * Incident history (manual)
-* JavaScrit changes service status to unknown if page is old
+* Service status to unknown if page age > 5 min
 
 ## Demo
 
@@ -39,7 +39,7 @@ Command can be:
 * `ping` - Check ping status 
 * `port` - Check open port status
 
-There are also `http4`, `http6`, `ping4`, `ping6`, `port4`, `port6` for IPv4 or IPv6 only check.  
+There are also `http4`, `http6`, `ping4`, `ping6`, `port4`, `port6` for IPv4 or IPv6 only check.
 Note: `port4` and `port6` require OpenBSD `nc` binary.
 
 The syntax of `incidents.txt` files is:
