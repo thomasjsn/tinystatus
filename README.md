@@ -11,6 +11,7 @@ tinystatus generate an html status page via shell script.
 * Easy configuration and customisation
 * Tiny (~1kb) optimized result page
 * Incident history (manual)
+* JavaScrit changes service status to unknown if page is old
 
 ## Demo
 
