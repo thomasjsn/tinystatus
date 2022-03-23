@@ -13,10 +13,6 @@ tinystatus generate an html status page via shell script.
 * Incident history (manual)
 * Service status to unknown if page age > 5 min
 
-## Demo
-
-An example site is available [here](https://status.homelab.no).
-
 ## Setup
 
 To install tinystatus:
